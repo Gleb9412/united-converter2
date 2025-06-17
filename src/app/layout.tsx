@@ -15,6 +15,18 @@ export const metadata: Metadata = {
   description: "Convert between various units of measurement easily and quickly.",
     // === НОВЫЙ БЛОК ДЛЯ CANONICAL ===
   alternates: { canonical: 'https://united-converter.org', },
+  // === НОВЫЙ БЛОК ДЛЯ РОБОТОВ ===
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
 };
 
 // Твой ID из GTM
