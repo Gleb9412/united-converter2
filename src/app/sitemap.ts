@@ -3,7 +3,7 @@ import { MetadataRoute } from 'next';
 import { UNIT_DATA } from '@/lib/constants';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const siteUrl = 'https://www.united-converter.org';
+  const siteUrl = 'https://united-converter.org';
 
   // Создаем URL для каждой категории из нашего файла с константами
   const categoryUrls = Object.keys(UNIT_DATA).map((category) => {
