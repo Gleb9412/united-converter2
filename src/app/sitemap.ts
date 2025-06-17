@@ -12,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
-    } as const; // 'as const' нужно для TypeScript, чтобы он не ругался на тип
+    } as const;
   });
 
   // Возвращаем массив, где первая ссылка - главная страница,
@@ -21,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: siteUrl,
       lastModified: new Date(),
-      changeFrequency: 'yearly',
+      changeFrequency: 'monthly', // <-- ВОТ ИЗМЕНЕНИЕ
       priority: 1,
     },
     ...categoryUrls,
