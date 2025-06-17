@@ -13,8 +13,8 @@ const translations: Record<string, Translations> = { en, ru };
 // Создаем контекст
 const I18nContext = createContext({
   locale: 'en',
-  setLocale: (locale: string) => {},
-  t: (key: keyof Translations) => '',
+  setLocale: (_locale: string) => {}, // было: (locale: string)
+  t: (_key: keyof Translations) => '',    // было: (key: keyof Translations)
 });
 
 // Создаем "Провайдер" - компонент, который будет "оборачивать" наше приложение
