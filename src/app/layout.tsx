@@ -13,6 +13,8 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "United converter", // Обновил title здесь тоже
   description: "Convert between various units of measurement easily and quickly.",
+    // === НОВЫЙ БЛОК ДЛЯ CANONICAL ===
+  alternates: { canonical: 'https://united-converter.org', },
 };
 
 // Твой ID из GTM
