@@ -11,7 +11,7 @@ import { I18nProvider } from "@/context/I18nProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Unit Converter",
+  title: "United Converter",
   description: "Convert between various units of measurement easily and quickly.",
 };
 
