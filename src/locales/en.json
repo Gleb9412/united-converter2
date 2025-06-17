@@ -1,0 +1,13 @@
+{
+  "headerTitle": "Unit Converter",
+  "language": "English",
+  "convertTitle": "Convert Between Units",
+  "categoryLabel": "Select Unit Category",
+  "fromLabel": "From",
+  "toLabel": "To",
+  "valueLabel": "Value",
+  "resultTitle": "Conversion Result",
+  "popularTitle": "Popular Conversions",
+  "footerSlogan": "Convert between various units of measurement",
+  "footerRights": "All rights reserved."
+}
