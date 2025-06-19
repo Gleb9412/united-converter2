@@ -2,14 +2,13 @@
 import { UNIT_DATA } from '@/lib/constants';
 import ConverterClientPage from './ConverterClientPage';
 
-type PageProps = {
+type Props = {
   params: {
     category: string;
     conversion: string;
   };
 };
 
-// Функция generateStaticParams остается без изменений
 export async function generateStaticParams() {
   const params = [];
   for (const categoryKey in UNIT_DATA) {
@@ -28,11 +27,8 @@ export async function generateStaticParams() {
   return params;
 }
 
-// Теперь это async функция
-export default async function ConversionPage({ params }: PageProps) {
-  // ИЗВЛЕКАЕМ ДАННЫЕ ЗДЕСЬ, НА СЕРВЕРЕ
+// Это обычный, не-асинхронный компонент, как и должно быть в стабильной версии
+export default function ConversionPage({ params }: Props) {
   const { category, conversion } = params;
-
-  // ПЕРЕДАЕМ ИХ КАК ОТДЕЛЬНЫЕ СВОЙСТВА (ПРОПСЫ)
   return <ConverterClientPage category={category} conversion={conversion} />;
 }
