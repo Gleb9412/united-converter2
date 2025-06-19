@@ -13,6 +13,7 @@ type ConverterInterfaceProps = {
   setFromUnit: (value: string) => void;
   toUnit: string;
   setToUnit: (value: string) => void;
+  onSwap?: () => void;
 };
 
 export default function ConverterInterface({
@@ -22,6 +23,7 @@ export default function ConverterInterface({
   setFromUnit,
   toUnit,
   setToUnit,
+  onSwap,
 }: ConverterInterfaceProps) {
   // Получаем функцию `t` из нашего контекста
   const { t } = useTranslation();
@@ -60,16 +62,6 @@ export default function ConverterInterface({
     setResult(formattedResult);
   }, [inputValue, fromUnit, toUnit, category, currentUnits]);
   
-  // Обработчик смены категории
-  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const newCategory = e.target.value;
-    setCategory(newCategory);
-    const defaultUnits = Object.keys(UNIT_DATA[newCategory].units);
-    setFromUnit(defaultUnits[0]);
-    setToUnit(defaultUnits[1] || defaultUnits[0]);
-    setInputValue('1');
-  };
-
   // Обработчик смены юнитов местами
   const handleSwapUnits = () => {
     setFromUnit(toUnit);
@@ -87,7 +79,7 @@ export default function ConverterInterface({
             <select
               id="unitCategory"
               value={category}
-              onChange={handleCategoryChange}
+              onChange={(e) => setCategory(e.target.value)}
               className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none bg-white"
             >
               {Object.entries(UNIT_DATA).map(([key, value]) => (
@@ -125,7 +117,7 @@ export default function ConverterInterface({
           {/* Swap Button */}
           <div className="flex justify-center pb-1">
             <button
-              onClick={handleSwapUnits}
+              onClick={onSwap || handleSwapUnits}
               title="Swap units"
               className="p-2 text-blue-600 hover:bg-blue-100 rounded-full transition-colors"
             >
