@@ -1,5 +1,6 @@
 // src/app/[category]/[conversion]/ConverterClientPage.tsx
 'use client';
+
 import { useRouter, notFound } from 'next/navigation';
 import { UNIT_DATA } from '@/lib/constants';
 import ConverterInterface from '@/components/ConverterInterface';
@@ -24,30 +25,30 @@ export default function ConverterClientPage({ category: categoryKey, conversion 
   if (!categoryData.units[fromUnitKey] || !categoryData.units[toUnitKey]) {
     return notFound();
   }
-
+  
   const handleCategoryChange = (newCategory: string) => {
     const defaultUnits = Object.keys(UNIT_DATA[newCategory].units);
     const from = defaultUnits[0];
     const to = defaultUnits[1] || defaultUnits[0];
-    router.push(`/<span class="math-inline">\{newCategory\}/</span>{from}-to-${to}`);
+    router.push(`/${newCategory}/${from}-to-${to}`);
   };
 
   const handleFromUnitChange = (newFrom: string) => {
     if (newFrom === toUnitKey) return;
-    router.push(`/<span class="math-inline">\{categoryKey\}/</span>{newFrom}-to-${toUnitKey}`);
+    router.push(`/${categoryKey}/${newFrom}-to-${toUnitKey}`);
   };
 
   const handleToUnitChange = (newTo: string) => {
     if (newTo === fromUnitKey) return;
-    router.push(`/<span class="math-inline">\{categoryKey\}/</span>{fromUnitKey}-to-${newTo}`);
+    router.push(`/${categoryKey}/${fromUnitKey}-to-${newTo}`);
   };
 
   const handleSwapUnits = () => {
-    router.push(`/<span class="math-inline">\{categoryKey\}/</span>{toUnitKey}-to-${fromUnitKey}`);
+    router.push(`/${categoryKey}/${toUnitKey}-to-${fromUnitKey}`);
   };
-
+  
   const handlePopularConversionSelect = (cat: string, from: string, to: string) => {
-    router.push(`/<span class="math-inline">\{cat\}/</span>{from}-to-${to}`);
+    router.push(`/${cat}/${from}-to-${to}`);
   };
 
   return (
